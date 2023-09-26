@@ -103,7 +103,7 @@ function destapar(id) {
             if (aciertos == 8) {
                 clearInterval(tiempoRegresivo);
                 mostrarAciertos.innerHTML = `Aciertos:${aciertos}😱`
-                mostrarTiempo.innerHTML=`🥳 solo te demoraste ${timerInicial-tiempoRegresivo} segundos`
+                mostrarTiempo.innerHTML=`🥳solo demoraste ${timerInicial-tiempoRegresivo}seg`
                 mostrarMovimientos.innerHTML = `Movimientos:${movimientos}😎`
             }
         } else {
