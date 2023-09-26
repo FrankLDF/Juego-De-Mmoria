@@ -30,6 +30,7 @@ numeros = numeros.sort(() => { return Math.random() - 0.5 });
 function reanudar(){
     aciertos = 0;
     timer = 30;
+    let timerInicial = timer;
     movimientos = 0;
     mostrarTiempo.innerHTML = `Tiempo: ${timer} segundos`;
     clearInterval(tiempoRegresivo);
@@ -103,7 +104,7 @@ function destapar(id) {
             if (aciertos == 8) {
                 clearInterval(tiempoRegresivo);
                 mostrarAciertos.innerHTML = `Aciertos:${aciertos}😱`
-                mostrarTiempo.innerHTML=`🥳solo demoraste ${timerInicial-tiempoRegresivo}seg`
+                mostrarTiempo.innerHTML = `Lo hiciste en ${timerInicial - tiempoRegresivo}s 🥳`;
                 mostrarMovimientos.innerHTML = `Movimientos:${movimientos}😎`
             }
         } else {
