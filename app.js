@@ -8,7 +8,7 @@ let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
 let timer = 30;
-let timerInicial = timer;
+let timerInicial = 30;
 let tiempoRegresivo = null;
 
 //Seleccion de estadisticas del documento
@@ -30,7 +30,7 @@ numeros = numeros.sort(() => { return Math.random() - 0.5 });
 function reanudar(){
     aciertos = 0;
     timer = 30;
-    let timerInicial = timer;
+    timerInicial = 30;
     movimientos = 0;
     mostrarTiempo.innerHTML = `Tiempo: ${timer} segundos`;
     clearInterval(tiempoRegresivo);
@@ -104,7 +104,7 @@ function destapar(id) {
             if (aciertos == 8) {
                 clearInterval(tiempoRegresivo);
                 mostrarAciertos.innerHTML = `Aciertos:${aciertos}😱`
-                mostrarTiempo.innerHTML = `Lo hiciste en ${timerInicial - tiempoRegresivo}s 🥳`;
+                mostrarTiempo.innerHTML = `Lo hiciste en ${timerInicial - timer}s 🥳`;
                 mostrarMovimientos.innerHTML = `Movimientos:${movimientos}😎`
             }
         } else {
