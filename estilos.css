@@ -71,6 +71,11 @@ a{
     text-decoration: none;
 }
 
+img{
+    width: 90%;
+    height: 90%;
+}
+
 @media screen and (max-width: 480px) {
     main{
     width: 80vw;

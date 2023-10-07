@@ -11,6 +11,11 @@ let timer = 30;
 let timerInicial = 30;
 let tiempoRegresivo = null;
 
+let darClick = new Audio('./sonidos/click.wav');
+let equivocado = new Audio('./sonidos/equivicado.wav');
+let jganar = new Audio('./sonidos/ganar.wav');
+let jperder = new Audio('./sonidos/perder.wav');
+
 //Seleccion de estadisticas del documento
 
 let mostrarMovimientos = document.getElementById("movimientos");
@@ -50,6 +55,7 @@ function contarTiempo() {
     timer--;
     mostrarTiempo.innerHTML = `Tiempo:${timer}s`;
     if (timer == 0) {
+      jperder.play();
       clearInterval(tiempoRegresivo);
       Swal.fire({
         title: "😥Oops...",
@@ -64,7 +70,7 @@ function contarTiempo() {
 function bloquearTarjetas() {
   for (let i = 0; 1 <= 15; i++) {
     let tarjetaBloqueada = document.getElementById(i);
-    tarjetaBloqueada.innerHTML = numeros[i];
+    tarjetaBloqueada.innerHTML = `<img src="./multimedia/${numeros[i]}.jpg" alt="">`;
     tarjetaBloqueada.disabled = true;
   }
 }
@@ -80,17 +86,18 @@ function destapar(id) {
   tarjetasDestapadas++;
   // console.log(tarjetasDestapadas);
   if (tarjetasDestapadas == 1) {
+    darClick.play();
     //Mostrar el primer numero
     tarjeta1 = document.getElementById(id);
     primerResultado = numeros[id];
-    tarjeta1.innerHTML = primerResultado;
+    tarjeta1.innerHTML = `<img src="./multimedia/${primerResultado}.jpg" alt="">`;
 
     //Desabilitar el boton ya girado
     tarjeta1.disabled = true;
   } else if (tarjetasDestapadas == 2) {
     tarjeta2 = document.getElementById(id);
     segundoResultado = numeros[id];
-    tarjeta2.innerHTML = segundoResultado;
+    tarjeta2.innerHTML = `<img src="./multimedia/${segundoResultado}.jpg" alt="">`;
 
     //Desabilitarel segundo boton
     tarjeta2.disabled = true;
@@ -99,6 +106,7 @@ function destapar(id) {
     movimientos++;
     mostrarMovimientos.innerHTML = `Movimientos:${movimientos}`;
     if (primerResultado == segundoResultado) {
+      darClick.play();
       tarjetasDestapadas = 0;
 
       //Aumentar los Aciertos
@@ -106,6 +114,7 @@ function destapar(id) {
       mostrarAciertos.innerHTML = `Aciertos:${aciertos}`;
 
       if (aciertos == 8) {
+        jganar.play();
         clearInterval(tiempoRegresivo);
         mostrarAciertos.innerHTML = `Aciertos:${aciertos}😱`;
         mostrarTiempo.innerHTML = `Lo hiciste en ${timerInicial - timer}s 🥳`;
@@ -113,6 +122,7 @@ function destapar(id) {
       }
     } else {
       //Mostrar momentaneamente y volver a tapar
+      equivocado.play();
       setTimeout(() => {
         tarjeta1.innerHTML = "";
         tarjeta2.innerHTML = "";
