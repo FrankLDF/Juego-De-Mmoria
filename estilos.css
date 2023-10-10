@@ -86,6 +86,7 @@ img{
     align-items: center;
 }
 button{
+    text-align: center;
     height: 70px;
     width: 70px;
     font-size: 38px;
@@ -116,7 +117,7 @@ button{
 }
 
 img{
-    width: 65px;
-    height: 65px;
+    width: 90%;
+    height: 90%;
 }
 }
