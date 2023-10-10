@@ -114,4 +114,9 @@ button{
     height: 50px;
     font-size: 28px;
 }
+
+img{
+    width: 65px;
+    height: 65px;
+}
 }
